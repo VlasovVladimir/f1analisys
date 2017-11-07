@@ -27,7 +27,7 @@ class get_race(scrapy.Spider):
         rows = response.xpath('//*[@id="ctl00_CPH_Main_GV_Stats"]/tbody/tr')
         for row in rows:
             line_ext = row.extract()
-            line_ext_sp = re.findall(r'>?["\'. \w\d]*<', line_ext)
+            line_ext_sp = re.findall(r'>?[-"\'. \w\d]*<', line_ext)
             results1 = [a[:-1] for a in line_ext_sp if not (a=='><' or a[1:-1]=='')]
             results = [a[1:] if a[0]=='>' else a for a in results1]
 
