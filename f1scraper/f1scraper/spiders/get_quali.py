@@ -23,7 +23,7 @@ class get_quali(scrapy.Spider):
         rows = response.xpath('//*[@id="ctl00_CPH_Main_GV_Stats"]/tbody/tr')
         for row in rows:
             line_ext = row.extract()
-            line_ext_sp = re.findall(r'>["\'. \w\d]*<', line_ext)
+            line_ext_sp = re.findall(r'>[-"\'. \w\d]*<', line_ext)
             #split rows
             results = [a[1:-1] for a in line_ext_sp if not a=='><']
             #make every row equal
